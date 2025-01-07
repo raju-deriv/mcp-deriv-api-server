@@ -5,11 +5,12 @@ A Model Context Protocol (MCP) server and OpenAI function calling service for in
 ## Features
 
 - Active symbols list
+- Get Account Balance
 
 ## Installation
 
 ```bash
-npm install coingecko-server
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
 ## Environment Setup
@@ -28,6 +29,7 @@ Claude Desktop provides full support for MCP features. To use this server:
 
 2. Add to your Claude Desktop configuration:
    - On macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - On cline VSCode: `/Users/raju/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
    - On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
 ```json
@@ -37,7 +39,7 @@ Claude Desktop provides full support for MCP features. To use this server:
             "command": "uv",
             "args": [
                 "--directory",
-                "/Users/raju/Sites/deriv/deriv-api-mcp",
+                "/Users/raju/Sites/deriv/mcp-deriv-api-server",
                 "run",
                 "server.py"
             ]
