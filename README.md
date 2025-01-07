@@ -9,8 +9,17 @@ A Model Context Protocol (MCP) server and OpenAI function calling service for in
 
 ## Installation
 
+### Local Installation
+
 ```bash
 curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+### Docker Installation
+
+1. Build the Docker image:
+```bash
+docker build -t deriv-api-mcp .
 ```
 
 ## Environment Setup
@@ -32,18 +41,36 @@ Claude Desktop provides full support for MCP features. To use this server:
    - On cline VSCode: `/Users/raju/Library/Application Support/Code/User/globalStorage/saoudrizwan.claude-dev/settings/cline_mcp_settings.json`
    - On Windows: `%APPDATA%\Claude\claude_desktop_config.json`
 
+### For Local Installation
 ```json
 {
   "mcpServers": {
-        "deriv-api-mcp": {
-            "command": "uv",
-            "args": [
-                "--directory",
-                "/Users/raju/Sites/deriv/mcp-deriv-api-server",
-                "run",
-                "server.py"
-            ]
-        }
+    "deriv-api-mcp": {
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/Users/raju/Sites/deriv/mcp-deriv-api-server",
+        "run",
+        "server.py"
+      ]
+    }
+  }
+}
+```
+
+### For Docker Installation
+```json
+{
+  "mcpServers": {
+    "deriv-api-mcp": {
+      "command": "docker",
+      "args": [
+        "run",
+        "--rm",
+        "-i",
+        "deriv-api-mcp"
+      ]
+    }
   }
 }
 ```
@@ -51,8 +78,8 @@ Claude Desktop provides full support for MCP features. To use this server:
 3. Restart Claude Desktop
 
 The server provides the following tools:
-- `active-symbols`: Get a list of active symbols
-
+- `get_active_symbols`: Get a list of active trading symbols
+- `get_account_balance`: Get the current account balance
 
 ## Usage with OpenAI Function Calling
 
@@ -63,4 +90,4 @@ Please refer to the [Deriv API documentation](https://api.deriv.com) for current
 
 ## License
 
-MIT 
+MIT
